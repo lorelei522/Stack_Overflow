@@ -1,3 +1,4 @@
 get '/questions/new' do
-  erb:'/questions'
+  erb:'/questions/new'
 end
+
