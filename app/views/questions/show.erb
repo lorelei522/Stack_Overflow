@@ -5,7 +5,9 @@
 <% if logged_in? %>
   <p><a href="/questions/<%= @question.id %>/answers/new">Answer this question</a></p>
 <% end %>
-
+<% if logged_in? %>
+  <p><a href="/questions/<%= @question.id %>/comments/new">Add a comment to question </a></p>
+<% end %>
 <% unless @question.comments.empty? %>
   <p>Comments</p>
   <ul>
