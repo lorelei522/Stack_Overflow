@@ -1,8 +1,8 @@
-<center><u><h1>Question:</h1></u></center>
-<div>
-  <form action='/questions' name='question_form' method='post'>
-    <center><label for="user">Username:</label>  <input type='text' name='user' placeholder='username'><br><br></center>
-    <center><label for="question">Question:</label> <input type='textarea' name='body' placeholder='question'><br><br></center>
-    <center><button class="btn btn-default" type="submit">submit</button></center>
+<div >
+  <h1>Ask a Question:</h1>
+  <form action='/questions' method='post'>
+    <label for="title">Title:</label><input type='text' name="question[title]" placeholder='Title'>
+    <label for="description">Description:</label><input type='textarea' name='question[description]' placeholder='Description'>
+    <button class="btn btn-default" type="submit">submit</button>
   </form>
 </div>
