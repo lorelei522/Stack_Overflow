@@ -1,6 +1,6 @@
 get '/users/new' do
   erb :'/users/new'
-end 
+end
 
 post '/users' do
   user = User.new(params[:user])
@@ -10,10 +10,10 @@ post '/users' do
   else
     @errors = user.errors.full_messages
     erb :'/users/new'
-  end 
-end 
+  end
+end
 
-get '/users/:user_id' do 
+get '/users/:user_id' do
   @user = User.find_by(id: params[:user_id])
-    erb :'/users/show'
-end 
+  erb :'/users/show'
+end
