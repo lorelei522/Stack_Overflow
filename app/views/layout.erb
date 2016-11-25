@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -25,12 +25,13 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
-      <li><a href="/questions/new">Questions</a></li>
-
+      <%if logged_in?%>
+        <li><a href="/questions/new">Ask a question</a></li>
+      <%end%>
     </ul>
  <%if logged_in?%>
  <ul class="nav navbar-nav navbar-right">
-      <li><a href="/users/<%=current_user.id%>"><%=current_user.username%></a> </li>  
+      <li><a href="/users/<%=current_user.id%>"><%=current_user.username%></a> </li>
      <li><a><form action="/sessions" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Log Out">
@@ -39,16 +40,15 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/users/new"><span class="glyphicon glyphicon-user"></span> Register</a></li>
       <li><a href="/sessions/new"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      
+
  <%end%>
 
     </ul>
   </div>
 </nav>
-    
+
   <%= yield %>
 </body>
 
 
 </html>
-
