@@ -2,30 +2,33 @@
 <p>Submitted by <a href='<%= "/users/#{@question.author_id}" %>'><%= @question.author.username %></a></p><br />
 <p><%= @question.description %></p>
 
+<% if logged_in? %>
+  <p><a href="/questions/<%= @question.id %>/answers/new">Answer this question</a></p>
+<% end %>
+
 <% unless @question.comments.empty? %>
   <p>Comments</p>
-  <ol>
+  <ul>
     <% @question.comments.each do |comment| %>
       <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id %>"><%= comment.commenter.username %></a></li>
     <% end %>
-  </ol>
+  </ul>
 <% end %>
 
-
 <%unless @answers.empty?%>
-  <ol>
+  <ul>
     <p>Answers</p>
     <% @answers.each do |answer| %>
     <li><p><%=answer.text%></p>
-      <p> <a href="/users/<%=%>"> - <%= answer.user.username %></a></p></li> 
+      <p> <a href="/users/<%= answer.user.id %>"> - <%= answer.user.username %></a></p></li>
       <% unless answer.comments.empty? %>
-        <p>comments</p>
-        <ol>
+        <p>Comments</p>
+        <ul>
           <% answer.comments.each do |comment| %>
-            <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id%>" %>><%= comment.commenter.username %></a></li>
+            <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id%>"><%= comment.commenter.username %></a></li>
           <% end %>
-        </ol>
+        </ul>
       <% end %>
     <% end %>
-  </ol>
+  </ul>
 <%end%>
