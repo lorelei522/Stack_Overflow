@@ -1,5 +1,5 @@
 get '/questions' do
-  @questions = Question.all
+  @questions = Question.order(updated_at: :desc)
   erb :'/questions/index'
 end
 
@@ -11,7 +11,6 @@ post '/questions' do
   require_login
   question = Question.new(params[:question])
   question.author = current_user
-  # binding.pry
   if question.save
     redirect "/questions/#{question.id}"
   else
@@ -23,6 +22,7 @@ end
 get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
   @answers = Answer.where(question_id: params[:id])
+  @best_answer = @answers.find_by(id: @question.best_answer_id)
   erb :'/questions/show'
 end
 
@@ -42,4 +42,10 @@ post '/questions/:id/answers' do
   else
     erb :'/answers/new'
   end
+end
+
+put '/questions/:question_id/answers/:id' do
+  question = Question.find_by(id: params[:question_id])
+  question.update(best_answer_id: params[:id])
+  redirect "questions/#{question.id}"
 end
