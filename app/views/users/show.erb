@@ -1,17 +1,22 @@
 <center><h2><u><%=@user.username%>'s Questions</u></h2></center>
 <div>
-  
+
     <center><h3>Question Count: <%= @user.questions.length %></h3></center>
-   
+
     <center><strong>Answer Count: <%= @user.answers.length %> </strong></center>
-      
+
 <center><h5>Member since <%= @user.created_at.to_date %></h5></center>
       <% @user.questions.each do |question| %>
       <ul>
         <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
       </ul>
       <% end %>
-   
-   
+
+      <center><u><h1>Ask a Question:</h1></u></center>
+      <form action='/questions' method='post'>
+        <center><label for="title">Title:</label>  <input type='text' name="question[title]" placeholder='Title'><br><br></center>
+        <center><label for="description">Description:</label> <input  type='textarea' name='question[description]' placeholder='Description'><br><br></center>
+        <center><button class="btn btn-default" type="submit">submit</button></center>
+      </form>
 
 </div>
