@@ -1,7 +1,32 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  // voting up
+  $(".question").on("click", ".vote-up", function(event){
+    // debugger;
+    var vote = 1;
+    var questionId = $(this).closest("div").attr("id")
+    var url = "/questions/" + questionId + "/votes"
+    $.ajax({
+      url: url,
+      method: "post",
+      data: {"type": "Question", "vote": vote}
+    }).done(function(response){
+      // alert(response["points"])
+      $("div#" + questionId).find(".vote-up").css("color", "red")
+      $("div#" + questionId).find(".points").text(response["points"])
+    });
+  });
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    $(".question").on("click", ".vote-down", function(event){
+    var vote = -1;
+    var questionId = $(this).closest("div").attr("id")
+    var url = "/questions/" + questionId + "/votes"
+    $.ajax({
+      url: url,
+      method: "post",
+      data: {"type": "Question", "vote": vote}
+    }).done(function(response){
+      $("div#" + questionId).find(".vote-down").css("color", "red")
+      $("div#" + questionId).find(".points").text(response["points"])
+    });
+  });
 });

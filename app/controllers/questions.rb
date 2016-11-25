@@ -9,13 +9,13 @@ end
 
 post '/questions' do
   require_login
-  question = Question.new(params[:question])
-  question.author = current_user
+  @question = Question.new(params[:question])
+  @question.author = current_user
   # binding.pry
-  if question.save
-    redirect "/questions/#{question.id}"
+  if @question.save
+    redirect "/questions/#{@question.id}"
   else
-    @errors = question.errors.full_messages
+    @errors = @question.errors.full_messages
     erb:'/questions/new'
   end
 end
