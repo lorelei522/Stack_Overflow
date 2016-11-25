@@ -1,0 +1,8 @@
+<h1>Your comment to this question:</h1>
+<p><%= @question.title %></p>
+<p><%= @question.description %></p>
+
+<form action="/questions/<%= @question.id %>/comments" method="post">
+  <textarea name="comment" rows="8" cols="80"></textarea>
+  <input type="submit" value="Submit">
+</form>
