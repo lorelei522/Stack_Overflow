@@ -23,6 +23,7 @@ end
 get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
   @answers = Answer.where(question_id: params[:id])
+  @best_answer = @answers.find_by(id: @question.best_answer_id)
   erb :'/questions/show'
 end
 
