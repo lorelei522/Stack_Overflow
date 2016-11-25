@@ -15,14 +15,34 @@
   </ul>
 <% end %>
 
+<% if @question.best_answer_id %>
+  <p>Best answer:</p>
+  <p><%= @best_answer.text %></p>
+  <p><a href="/users/<%= @best_answer.user.id %>"> - <%= @best_answer.user.username %></a></p>
+  <% unless @best_answer.comments.empty? %>
+    <p>Comments</p>
+    <ul>
+      <% @best_answer.comments.each do |comment| %>
+        <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id%>"><%= comment.commenter.username %></a></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
 <%unless @answers.empty?%>
+  <p>Answers:</p>
   <ul>
-    <p>Answers</p>
     <% @answers.each do |answer| %>
     <li><p><%=answer.text%></p>
-      <p> <a href="/users/<%= answer.user.id %>"> - <%= answer.user.username %></a></p></li>
+      <p><a href="/users/<%= answer.user.id %>"> - <%= answer.user.username %></a></p></li>
+      <% if current_user == @question.author %>
+        <form action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+          <input type="hidden" name="_method" value="put">
+          <input type="submit" value="Mark as best answer">
+        </form>
+      <% end %>
       <% if logged_in? %>
-      <p><a href="/questions/<%= answer.question_id %>/answers/<%= answer.id %>/comments/new">Add a comment to answer </a></p>
+        <p><a href="/questions/<%= answer.question_id %>/answers/<%= answer.id %>/comments/new">Add a comment to answer </a></p>
       <% end %>
       <% unless answer.comments.empty? %>
         <p>Comments on Answer</p>
