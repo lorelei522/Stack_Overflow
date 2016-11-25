@@ -1,0 +1,8 @@
+<li>
+  <div class="question">
+    <a href='/questions/<%= question.id %>'><span class="question-title"><%= question.title %></span></a>
+    <p> asked by
+    <a href='<%= "/users/#{question.author.id}" %>'><span class="author-name"><%= question.author.username %></span></a>
+  </p>
+  </div>
+</li>

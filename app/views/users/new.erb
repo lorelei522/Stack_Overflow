@@ -1,0 +1,18 @@
+<div class ="container">
+  <h3>Create an Account</h3>
+  <%if @errors %>
+    <%@errors.each do |error|%>
+    <ul>
+      <li><%= error %></li>
+    </ul>
+    <%end%>
+  <%end%>
+
+
+  <form action="/users" method="post">
+    <input type="text" name="user[username]" placeholder="username">
+    <input type="email" name="user[email]" placeholder="email">
+    <input type="password" name="user[password]" placeholder="password">
+    <input class="waves-effect waves-purple lighten-4 btn-flat" type="submit" value="Register">
+  </form>
+</div>

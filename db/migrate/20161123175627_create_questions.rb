@@ -1,9 +1,12 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
-     create_table :users do |t|
-      t.string :text, null: false
+     create_table :questions do |t|
+      t.string :title, null: false
+      # add this so people can clarify on question
+      t.string :description
       t.references :author
-      t.string :answer_id
+      t.integer :best_answer_id 
+
       t.timestamps(null: false)
     end
   end
