@@ -1,5 +1,5 @@
 <ul>
 <% @questions.each do |question| %>
-  <%= erb :'/questions/_question', locals: {question: question} %>
+  <%= erb :'_partials/_question',layout: false, locals: {question: question} %>
 <% end %>
 </ul>

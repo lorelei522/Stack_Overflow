@@ -22,7 +22,7 @@ end
 get '/questions/:question_id/comments/new' do
   require_login
   @question = Question.find_by(id: params[:question_id])
-  erb:'/comments/_new'
+  erb:'_partials/_comment_new'
 end
 
 post '/questions/:question_id/comments' do
@@ -34,6 +34,6 @@ post '/questions/:question_id/comments' do
     redirect "/questions/#{@question.id}"
   else
     @errors = comment.errors.full_messages
-    erb:'/comments/_new'
+    erb:'_partials/_comment_new'
   end
 end

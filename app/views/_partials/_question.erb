@@ -1,6 +1,6 @@
-<li>
+<td>
   <div class="question">
-    <div class="row">            
+    <div class="row">
       <div class="col-md-1" id="<%=question.id%>">
         <button class="vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
         <span class="points col-md-12"><%= question.points %></span>
@@ -9,7 +9,7 @@
     </div>
     <a href='/questions/<%= question.id %>'><span class="question-title"><%= question.title %></span></a>
     <p> asked by
-      <a href='<%= "/users/#{question.author.id}" %>'><span class="author-name"><%= question.author.username %></span></a>
+      <a href='<%= "/users/#{question.author.id}" %>'><span class="author-name"><%= question.author.username %></a> <span class ="time-since-creation ">    <%= question.time_since_creation  %> hours ago</span></span>
     </p>
   </div>
-</li>
+</td>

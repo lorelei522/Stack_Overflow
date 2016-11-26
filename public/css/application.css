@@ -1,5 +1,10 @@
 .col-md-1 {
-  font-size: 12px; 
+  font-size: 12px;
   text-align: center;
   color: #606060;
+}
+
+.time-since-creation {
+  font-size: 11px;
+  color: grey;
 }

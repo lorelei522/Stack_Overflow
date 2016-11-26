@@ -10,4 +10,7 @@ class Question < ActiveRecord::Base
   def points
     self.votes.sum(:vote_direction)
   end
-end 
+  def time_since_creation
+  ((Time.now - created_at)/3600).round
+  end
+end

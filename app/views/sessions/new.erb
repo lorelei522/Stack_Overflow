@@ -1,12 +1,6 @@
 <div class ="container">
   <h3>Log In </h3>
-  <%if @errors %>
-    <%@errors.each do |error|%>
-    <ul>
-      <li><%= error %></li>
-    </ul>
-    <%end%>
-  <%end%>
+  <%= erb :'_partials/_errors', layout: false %>
 
 
   <form action="/sessions" method="post">
