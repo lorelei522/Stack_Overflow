@@ -5,4 +5,8 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :voteable
 
   validates_presence_of :text
+
+  def points
+    self.votes.sum(:vote_direction)
+  end
 end
