@@ -86,11 +86,15 @@ $(document).ready(function() {
   });
 
   $(".answer-comment").on("click", ".comment-vote-up", function(event){
+    function popupCenter(url, title, w, h) {
+    var left = (screen.width/2)-(w/2);
+    var top = (screen.height/2)-(h/2);
+    return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+  }
     var vote = 1;
     var answerId = $(this).closest("div").parent().attr("id")
     var commentId = $(this).closest("div").attr("id")
     var url = "/answers/" + answerId + "/comments/" + commentId + "/votes" 
-    // debugger
     $.ajax({
       url: url,
       method: "post",
@@ -104,11 +108,15 @@ $(document).ready(function() {
   });
 
   $(".answer-comment").on("click", ".comment-vote-down", function(event){
+    function popupCenter(url, title, w, h) {
+    var left = (screen.width/2)-(w/2);
+    var top = (screen.height/2)-(h/2);
+    return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+  }
     var vote = -1;
     var answerId = $(this).closest("div").parent().attr("id")
     var commentId = $(this).closest("div").attr("id")
     var url = "/answers/" + answerId + "/comments/" + commentId + "/votes" 
-    // debugger
     $.ajax({
       url: url,
       method: "post",
@@ -122,6 +130,11 @@ $(document).ready(function() {
   });
 
   $(".question-comment").on("click", ".question-vote-up", function(event){
+    function popupCenter(url, title, w, h) {
+    var left = (screen.width/2)-(w/2);
+    var top = (screen.height/2)-(h/2);
+    return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+  }
     var vote = 1;
     var questionId = $(this).closest("div").parent().attr("id")
     var commentId = $(this).closest("div").attr("id")
@@ -139,11 +152,15 @@ $(document).ready(function() {
   });
 
   $(".question-comment").on("click", ".question-vote-down", function(event){
+    function popupCenter(url, title, w, h) {
+    var left = (screen.width/2)-(w/2);
+    var top = (screen.height/2)-(h/2);
+    return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+  }
     var vote = -1;
     var questionId = $(this).closest("div").parent().attr("id")
     var commentId = $(this).closest("div").attr("id")
     var url = "/questions/" + questionId + "/comments/" + commentId + "/votes" 
-    // debugger
     $.ajax({
       url: url,
       method: "post",
