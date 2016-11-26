@@ -6,9 +6,9 @@ post '/questions/:id/votes' do
   points = question.points
     content_type :json
     {points: points}.to_json
-  else 
+  else
     # error_handling
     status 422
   end
 
-end 
+end

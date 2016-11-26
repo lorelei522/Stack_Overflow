@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // voting up
   $(".question").on("click", ".vote-up", function(event){
-    // debugger;
+
     var vote = 1;
     var questionId = $(this).closest("div").attr("id")
     var url = "/questions/" + questionId + "/votes"
@@ -29,4 +29,12 @@ $(document).ready(function() {
       $("div#" + questionId).find(".points").text(response["points"])
     });
   });
+
+    $(".question").on("click", ".not_logged_vote_up", function(event){
+      alert("Only logged in users can vote!");
+    })
+
+    $(".question").on("click", ".not_logged_vote_down", function(event){
+      alert("Only logged in users can vote!");
+    })
 });

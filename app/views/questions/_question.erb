@@ -1,10 +1,16 @@
 <li>
   <div class="question">
-    <div class="row">            
+    <div class="row">
       <div class="col-md-1" id="<%=question.id%>">
+        <% if logged_in? %>
         <button class="vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
         <span class="points col-md-12"><%= question.points %></span>
         <button class="vote-down glyphicon glyphicon-triangle-bottom col-md-12"></button>
+        <%else%>
+        <button class="not_logged_vote_up glyphicon glyphicon-triangle-top col-md-12"></button>
+        <span class="points col-md-12"><%= question.points %></span>
+        <button class="not_logged_vote_down glyphicon glyphicon-triangle-bottom col-md-12"></button>
+        <%end%>
       </div>
     </div>
     <a href='/questions/<%= question.id %>'><span class="question-title"><%= question.title %></span></a>
