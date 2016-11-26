@@ -1,13 +1,6 @@
 <div class ="container">
   <h3>Create an Account</h3>
-  <%if @errors %>
-    <%@errors.each do |error|%>
-    <ul>
-      <li><%= error %></li>
-    </ul>
-    <%end%>
-  <%end%>
-
+  <%= erb :'_partials/_errors', layout: false %>
 
   <form action="/users" method="post">
     <input type="text" name="user[username]" placeholder="username">

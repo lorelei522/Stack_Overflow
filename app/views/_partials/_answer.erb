@@ -8,7 +8,7 @@
       </div>
     </div>
     <p><%=answer.text%></p>
-      <p><a href="/users/<%= answer.user.id %>"> - <%= answer.user.username %></a></p>
+      <p><a href="/users/<%= answer.user.id %>"> - <%= answer.user.username %></a> <span class ="time-since-creation "> answered  <%= answer.time_since_creation  %> hours ago</span></p>
       <% if current_user == @question.author %>
         <form action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
           <input type="hidden" name="_method" value="put">
