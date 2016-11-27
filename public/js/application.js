@@ -17,7 +17,11 @@ $(document).ready(function() {
       $("div#" + questionId).find(".vote-up").css("color", "red")
       $("div#" + questionId).find(".points").text(response["points"])
     }).fail(function(response){
-      popupCenter("/popup", "login", "250", "250");
+      if (response["status"] === 422) {
+        alert("Logged in users may only vote once per question!")
+      } else {
+        popupCenter("/popup", "login", "250", "250");
+      };
     });
   });
 
@@ -38,7 +42,11 @@ $(document).ready(function() {
       $("div#" + questionId).find(".vote-down").css("color", "blue")
       $("div#" + questionId).find(".points").text(response["points"])
     }).fail(function(response){
+      if (response["status"] === 422) {
+        alert("Logged in users may only vote once per question!")
+      } else {
         popupCenter("/popup", "login", "250", "250");
+      };
     });
   });
 
@@ -59,7 +67,11 @@ $(document).ready(function() {
       $("div#" + answerId).find(".vote-up").css("color", "red")
       $("div#" + answerId).find(".points").text(response["points"])
     }).fail(function(response){
+      if (response["status"] === 422) {
+        alert("Logged in users may only vote once per answer!")
+      } else {
         popupCenter("/popup", "login", "250", "250");
+      };
     });
   });
 
@@ -80,8 +92,11 @@ $(document).ready(function() {
       $("div#" + answerId).find(".vote-down").css("color", "blue")
       $("div#" + answerId).find(".points").text(response["points"])
     }).fail(function(response){
-      popupCenter("/popup", "login", "250", "250");
-
+      if (response["status"] === 422) {
+        alert("Logged in users may only vote once per answer!")
+      } else {
+        popupCenter("/popup", "login", "250", "250");
+      };
     });
   });
 
@@ -103,7 +118,11 @@ $(document).ready(function() {
       $(".answer-comment").find("#" + answerId).find("#" + commentId).find(".comment-vote-up").css("color", "red")
       $(".answer-comment").find("#" + answerId).find("#" + commentId).find(".points").text(response["points"])
     }).fail(function(response){
-      popupCenter("/popup", "login", "250", "250");
+      if (response["status"] === 422) {
+        alert("Logged in users may only vote once per comment!")
+      } else {
+        popupCenter("/popup", "login", "250", "250");
+      };
     });
   });
 
@@ -125,7 +144,11 @@ $(document).ready(function() {
       $(".answer-comment").find("#" + answerId).find("#" + commentId).find(".comment-vote-down").css("color", "blue")
       $(".answer-comment").find("#" + answerId).find("#" + commentId).find(".points").text(response["points"])
     }).fail(function(response){
-      popupCenter("/popup", "login", "250", "250");
+      if (response["status"] === 422) {
+        alert("Logged in users may only vote once per comment!")
+      } else {
+        popupCenter("/popup", "login", "250", "250");
+      };
     });
   });
 
@@ -147,7 +170,11 @@ $(document).ready(function() {
       $(".question-comment").find("#" + questionId).find("#" + commentId).find(".question-vote-up").css("color", "red")
       $(".question-comment").find("#" + questionId).find("#" + commentId).find(".points").text(response["points"])
     }).fail(function(response){
-      popupCenter("/popup", "login", "250", "250");
+      if (response["status"] === 422) {
+        alert("Logged in users may only vote once per comment!")
+      } else {
+        popupCenter("/popup", "login", "250", "250");
+      };
     });
   });
 
@@ -169,7 +196,11 @@ $(document).ready(function() {
       $(".question-comment").find("#" + questionId).find("#" + commentId).find(".question-vote-down").css("color", "blue")
       $(".question-comment").find("#" + questionId).find("#" + commentId).find(".points").text(response["points"])
     }).fail(function(response){
-      popupCenter("/popup", "login", "250", "250");
+      if (response["status"] === 422) {
+        alert("Logged in users may only vote once per comment!")
+      } else {
+        popupCenter("/popup", "login", "250", "250");
+      };
     });
   });
 
