@@ -214,7 +214,6 @@ $(document).ready(function() {
     }).done(function(response){
       $("#nav-question").replaceWith(response)
       $
-    })
-  })
-
+    });
+  });
 });

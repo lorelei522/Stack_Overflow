@@ -31,11 +31,14 @@
       </ul>
     <%if logged_in?%>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/users/<%=current_user.id%>"><%=current_user.username%></a> </li>
+        <li id="user"><a href="/users/<%=current_user.id%>"><%=current_user.username%></a> </li>
         <li><a><form action="/sessions" method="post">
           <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="Log Out">
+         <button type="button" class="btn btn-link">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
         </form></a></li>
+
       </ul>
     <%else%>
       <ul class="nav navbar-nav navbar-right">
