@@ -11,9 +11,13 @@ end
 post '/questions/:id/answers' do
   require_login
   question = Question.find_by(id: params[:id])
-  answer = Answer.new(text: params[:text], question_id: question.id, user_id: current_user.id)
-  if answer.save
+  @answer = Answer.new(text: params[:text], question_id: question.id, user_id: current_user.id)
+  if @answer.save 
+    if request.xhr?
+      erb :'/_partials/_answer_partial', layout:false
+    else
     redirect "/questions/#{question.id}"
+    end
   else
     erb :'/answers/new'
   end

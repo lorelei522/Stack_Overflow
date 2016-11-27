@@ -216,7 +216,7 @@ $(document).ready(function() {
     });
   });
 
-    $(".new-answer").on("click", function(event){
+  $(".new-answer").on("click", function(event){
     event.preventDefault();
     var questionId = $(this).attr("id")
     var url = "/questions/" + questionId + "/answers/new"
@@ -226,6 +226,22 @@ $(document).ready(function() {
     }).done(function(response){
       $(".new-answer").replaceWith(response)
       $
+    });
+  });
+
+  $(".container").on("submit", ".new-answer-form", function(event) { 
+  event.preventDefault();
+    var questionId = $(this).attr("id")
+    var url = "/questions/" + questionId + "/answers"
+    var data = $(this).serialize()
+    $.ajax({
+      url: url,
+      method: "post",
+      data: data 
+    }).done(function(response){
+      // alert(response)
+      $(".answer-list").append(response)
+      $(".new-answer").hide();
     });
   });
 });

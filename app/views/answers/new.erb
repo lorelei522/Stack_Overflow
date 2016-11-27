@@ -1,7 +1,9 @@
-<h1>Your answer to:</h1>
-<p><%= @question.title %></p>
+<div class="new-answer"> 
+  <h1>Your answer to:</h1>
+  <p><%= @question.title %></p>
 
-<form id="new-answer-form" action="/questions/<%= @question.id %>/answers" method="post">
-  <textarea name="text" rows="8" cols="80"></textarea>
-  <input type="submit" value="Submit">
-</form>
+  <form id="<%=@question.id%>" class="new-answer-form" action="/questions/<%= @question.id %>/answers" method="post">
+    <textarea name="text" rows="8" cols="80"></textarea>
+    <input type="submit" value="Submit">
+  </form>
+</div>
