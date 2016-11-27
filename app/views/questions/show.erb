@@ -12,7 +12,16 @@
   <p>Comments</p>
   <ul>
     <% @question.comments.each do |comment| %>
-      <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id %>"><%= comment.commenter.username %></a><span class ="time-since-creation ">  - <%= comment.date_of_creation  %> </span></li>
+      <div class="question-comment">
+        <div class="row" id="<%=@question.id%>">
+          <div class="col-md-1" id="<%=comment.id%>">
+            <button class="question-vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
+            <span class="points col-md-12"><%= comment.points %></span>
+            <button class="question-vote-down glyphicon glyphicon-triangle-bottom col-md-12"></button>
+          </div>
+        </div>
+        <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id %>"><%= comment.commenter.username %></a><span class ="time-since-creation ">  - <%= comment.date_of_creation  %> </span></li>
+      </div>
     <% end %>
   </ul>
 <% end %>
