@@ -1,3 +1,4 @@
+
 .col-md-1 {
   font-size: 12px;
   text-align: center;
@@ -23,4 +24,35 @@ label {
 
 .btn.btn-link {
   position: relative; top: -6px;
+}
+
+.container {
+  width: 70%;
+}
+
+.question-voting{
+  position: absolute; left: 15%;
+}
+.comments {
+  padding-left: 40px;
+  color: grey;
+}
+.points {
+  position: relative; top: -5px; left: -1px;
+
+}
+.glyphicon-triangle-top {
+  position: relative; top: -5px;
+  width: 35px;
+  padding-left: 9px;
+}
+
+.glyphicon-triangle-bottom {
+  position: relative; top: -5px;
+  width: 35px;
+  padding-left: 9px;
+}
+
+.question{
+  border-bottom: 1px solid lightgrey;
 }

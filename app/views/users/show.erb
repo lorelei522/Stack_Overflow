@@ -6,9 +6,12 @@
     <center><strong>Answer Count: <%= @user.answers.length %> </strong></center>
 
 <center><h5>Member since <%= @user.created_at.to_date %></h5></center>
-      <% @user.questions.each do |question| %>
-      <ul>
-        <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
-      </ul>
-      <% end %>
+  <br>
+  <div class="container">
+  <% @user.questions.each do |question| %>
+  <ul>
+    <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
+  </ul>
+  <% end %>
+  </div>
 </div>

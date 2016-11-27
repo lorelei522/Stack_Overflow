@@ -1,5 +1,8 @@
-<ul>
-<% @questions.each do |question| %>
-  <%= erb :'_partials/_question',layout: false, locals: {question: question} %>
-<% end %>
-</ul>
+<div class="container"> 
+  <ul>
+  <% @questions.each do |question| %>
+    <%= erb :'_partials/_question',layout: false, locals: {question: question} %>
+    <br>
+  <% end %>
+  </ul>
+</div>

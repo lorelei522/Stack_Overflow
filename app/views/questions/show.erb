@@ -10,21 +10,23 @@
     <p><a href="/questions/<%= @question.id %>/comments/new">Add a comment to question </a></p>
   <% end %>
   <% unless @question.comments.empty? %>
-    <p>Comments</p>
-    <ul>
-      <% @question.comments.each do |comment| %>
-        <div class="question-comment">
-          <div class="row" id="<%=@question.id%>">
-            <div class="col-md-1" id="<%=comment.id%>">
-              <button class="question-vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
-              <span class="points col-md-12"><%= comment.points %></span>
-              <button class="question-vote-down glyphicon glyphicon-triangle-bottom col-md-12"></button>
+    <div class="comments">
+      <p><strong><u>Comments</u></strong></p>
+      <ul>
+        <% @question.comments.each do |comment| %>
+          <div class="question-comment">
+            <div class="row" id="<%=@question.id%>">
+              <div class="col-md-1" id="<%=comment.id%>">
+                <button class="question-vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
+                <span class="points col-md-12"><%= comment.points %></span>
+                <button class="question-vote-down glyphicon glyphicon-triangle-bottom col-md-12"></button>
+              </div>
             </div>
+            <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id %>"><%= comment.commenter.username %></a><span class ="time-since-creation ">  - <%= comment.date_of_creation  %> </span></li>
           </div>
-          <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id %>"><%= comment.commenter.username %></a><span class ="time-since-creation ">  - <%= comment.date_of_creation  %> </span></li>
-        </div>
-      <% end %>
-    </ul>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
   <% if @question.best_answer_id %>
@@ -42,10 +44,11 @@
   <% end %>
 
   <%unless @answers.empty?%>
-    <p>Answers:</p>
-    <ul class="answer-list">
+    <p><strong><u>Answers</u></strong></p>
+    <ul class="answer-list list-unstyled">
       <% @answers.each do |answer| %>
         <%= erb :'_partials/_answer', layout: false, locals: {answer: answer} %>
+      <br>
       <% end %>
     </ul>
   <%end%>
