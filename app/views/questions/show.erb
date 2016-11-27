@@ -3,7 +3,7 @@
 <p><%= @question.description %><span class ="time-since-creation ">  asked - <%= @question.time_since_creation  %> hours ago</span></p>
 
 <% if logged_in? %>
-  <p><a href="/questions/<%= @question.id %>/answers/new">Answer this question</a></p>
+  <p id="<%=@question.id%>" class="new-answer"><a href="/questions/<%= @question.id %>/answers/new">Answer this question</a></p>
 <% end %>
 <% if logged_in? %>
   <p><a href="/questions/<%= @question.id %>/comments/new">Add a comment to question </a></p>

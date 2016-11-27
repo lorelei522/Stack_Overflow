@@ -206,13 +206,25 @@ $(document).ready(function() {
 
   $("nav").on("click", "#nav-question", function(event){
     event.preventDefault();
-    // $(this).hide
     var url = "/questions/new"
     $.ajax({
       url: url,
       method: "get"
     }).done(function(response){
       $("#nav-question").replaceWith(response)
+      $
+    });
+  });
+
+    $(".new-answer").on("click", function(event){
+    event.preventDefault();
+    var questionId = $(this).attr("id")
+    var url = "/questions/" + questionId + "/answers/new"
+    $.ajax({
+      url: url,
+      method: "get"
+    }).done(function(response){
+      $(".new-answer").replaceWith(response)
       $
     });
   });
