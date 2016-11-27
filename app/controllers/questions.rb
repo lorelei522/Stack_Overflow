@@ -4,7 +4,11 @@ get '/questions' do
 end
 
 get '/questions/new' do
-  erb:'/questions/new'
+  if request.xhr?
+    erb :'_partials/_new_question', layout: false
+  else
+    erb :'/questions/new'
+  end 
 end
 
 post '/questions' do
@@ -16,7 +20,7 @@ post '/questions' do
     redirect "/questions/#{@question.id}"
   else
     @errors = @question.errors.full_messages
-    erb:'/questions/new'
+    erb :'/questions/new'
   end
 end
 
