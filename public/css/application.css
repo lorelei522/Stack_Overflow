@@ -104,6 +104,15 @@ position: absolute; left: 20%;
   border-bottom: 1px solid lightgrey;
 }
 
-img{
+#logout{
   width: 100%;
+}
+
+.log-in, .register {
+  padding-top: 5%;
+  position: absolute; left: 30%;
+}
+img {
+  padding-top: 5%;
+  width: 40%;
 }
