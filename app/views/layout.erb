@@ -29,16 +29,17 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
         <%if logged_in?%>
-          <li><a href="/questions/new">Ask a question</a></li>
+          <li id="nav-question"><a href="/questions/new">Ask a question</a></li>
         <%end%>
       </ul>
     <%if logged_in?%>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/users/<%=current_user.id%>"><%=current_user.username%></a> </li>
+        <li id="user"><a href="/users/<%=current_user.id%>"><%=current_user.username%></a> </li>
         <li><a><form action="/sessions" method="post">
           <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="Log Out">
+          <input class="btn btn-link" type="submit" value="Log out">
         </form></a></li>
+
       </ul>
     <%else%>
       <ul class="nav navbar-nav navbar-right">

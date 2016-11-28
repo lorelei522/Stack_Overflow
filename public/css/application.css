@@ -1,3 +1,4 @@
+
 .col-md-1 {
   font-size: 12px;
   text-align: center;
@@ -7,4 +8,111 @@
 .time-since-creation {
   font-size: 11px;
   color: grey;
+}
+
+.form-inline{
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 20%;
+  width: 150%;
+}
+
+label {
+  color:white; 
+  font-weight: normal;
+}
+
+.btn.btn-link {
+  position: relative; top: -6px;
+}
+
+.container {
+  width: 70%;
+}
+
+.answer-comment {
+  padding-left: 5%;
+}
+
+.question-comment {
+  padding-left: 5%;
+}
+
+.question-voting{
+  position: absolute; left: 15%;
+}
+
+.q-comment {
+position: absolute; left: 20%;
+}
+.comments {
+  padding-left: 40px;
+  color: grey;
+}
+.points {
+  position: relative; top: -5px; left: -1px;
+
+}
+.glyphicon-triangle-top {
+  position: relative; top: -5px;
+  width: 35px;
+  padding-left: 9px;
+}
+
+.glyphicon-triangle-bottom {
+  position: relative; top: -5px;
+  width: 35px;
+  padding-left: 9px;
+}
+
+.question{
+  border-bottom: 1px solid lightgrey;
+}
+
+.comment-voting {
+  position: absolute; left: 24%;
+}
+
+.answer-voting {
+  position: absolute; left: 16%;
+}
+
+.answer {
+  padding-left: 6%;
+  border-bottom: 1px solid lightgrey;
+}
+
+#answer-header {
+  font-size: 18px;
+}
+
+.btn-primary {
+  /*background-color: darkgrey;*/
+  border-radius: 15px;
+}
+
+.fa-book {
+  font-size:24px;
+}
+
+#center {
+  margin: 0 auto;
+  width: 50%;
+}
+#prof-info {
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgrey;
+}
+
+#logout{
+  width: 100%;
+}
+
+.log-in, .register {
+  padding-top: 5%;
+  position: absolute; left: 30%;
+}
+img {
+  padding-top: 5%;
+  width: 40%;
 }

@@ -1,7 +1,9 @@
-<h1>Your comment to this answer:</h1>
-<p><%= @answer.text %></p>
+<div class="container">
+  <h1>Your comment to this answer:</h1>
+  <p><%= @answer.text %></p>
 
-<form action="/questions/<%= @question.id %>/answers/<%= @answer.id %>/comments" method="post">
-  <textarea name="comment" rows="8" cols="80"></textarea>
-  <input type="submit" value="Submit">
-</form>
+  <form action="/questions/<%= @question.id %>/answers/<%= @answer.id %>/comments" method="post">
+    <textarea name="comment" rows="8" cols="80"></textarea>
+    <input class="btn btn-primary" type="submit" value="Submit">
+  </form>
+</div>

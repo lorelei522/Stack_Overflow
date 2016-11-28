@@ -204,4 +204,42 @@ $(document).ready(function() {
     });
   });
 
+  $("nav").on("click", "#nav-question", function(event){
+    event.preventDefault();
+    var url = "/questions/new"
+    $.ajax({
+      url: url,
+      method: "get"
+    }).done(function(response){
+      $("nav").find("#nav-question").replaceWith(response)
+    });
+  });
+
+  $(".new-answer").on("click", function(event){
+    event.preventDefault();
+    var questionId = $(this).attr("id")
+    var url = "/questions/" + questionId + "/answers/new"
+    $.ajax({
+      url: url,
+      method: "get"
+    }).done(function(response){
+      $(".new-answer").replaceWith(response)
+    });
+  });
+
+  $(".container").on("submit", ".new-answer-form", function(event) { 
+  event.preventDefault();
+    var questionId = $(this).attr("id")
+    var url = "/questions/" + questionId + "/answers"
+    var data = $(this).serialize()
+    $.ajax({
+      url: url,
+      method: "post",
+      data: data 
+    }).done(function(response){
+      // alert(response)
+      $(".answer-list").append(response)
+      $(".new-answer").hide();
+    });
+  });
 });

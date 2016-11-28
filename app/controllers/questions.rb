@@ -4,7 +4,11 @@ get '/questions' do
 end
 
 get '/questions/new' do
-  erb:'/questions/new'
+  if request.xhr?
+    erb :'_partials/_new_question', layout: false
+  else
+    erb :'/questions/new'
+  end 
 end
 
 post '/questions' do
@@ -13,10 +17,14 @@ post '/questions' do
   @question.author = current_user
   # binding.pry
   if @question.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      erb :'_partials/_question', layout: false, locals: {question: @question}
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     @errors = @question.errors.full_messages
-    erb:'/questions/new'
+    erb :'/questions/new'
   end
 end
 

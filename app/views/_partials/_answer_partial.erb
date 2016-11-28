@@ -1,32 +1,32 @@
 <li>
   <div class="answer">
     <div class="row answer-voting">
-      <div class="col-md-1" id="<%=answer.id%>">
+      <div class="col-md-1" id="<%=@answer.id%>">
         <button class="vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
-        <span class="points col-md-12"><%= answer.points %></span>
+        <span class="points col-md-12"><%= @answer.points %></span>
         <button class="vote-down glyphicon glyphicon-triangle-bottom col-md-12"></button>
       </div>
     </div>
-    <p><%=answer.text%></p>
-    <p><a href="/users/<%= answer.user.id %>"> - <%= answer.user.username %></a> <span class ="time-since-creation "> answered  <%= answer.time_since_creation  %> hours ago</span></p>
-    <% if current_user == @question.author %>
-    <form action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+    <p><%=@answer.text%></p>
+    <p><a href="/users/<%= @answer.user.id %>"> - <%= @answer.user.username %></a> <span class ="time-since-creation "> answered  <%= @answer.time_since_creation  %> hours ago</span></p>
+    <% if current_user == @answer.question.author %>
+    <form action="/questions/<%= @answer.question.id %>/answers/<%= @answer.id %>" method="post">
       <input type="hidden" name="_method" value="put">
       <input type="submit" value="Mark as best answer">
     </form>
     <% end %>
     <% if logged_in? %>
-    <p><a href="/questions/<%= answer.question_id %>/answers/<%= answer.id %>/comments/new">Add a comment to answer </a></p>
-    <% end %>
+    <p><a href="/questions/<%= @answer.question_id %>/answers/<%= @answer.id %>/comments/new">Add a comment to answer </a></p>
     <br>
-    <% unless answer.comments.empty? %>
+    <% end %>
+    <% unless @answer.comments.empty? %>
       <div class="comments">
         <p><strong><u>Comments of Answer</u></strong></p>
         <br>
         <ul>
-          <% answer.comments.each do |comment| %>
+          <% @answer.comments.each do |comment| %>
             <div class="answer-comment">
-              <div class="comment-voting row" id="<%=answer.id%>">
+              <div class="row comment-voting" id="<%=@answer.id%>">
                 <div class="col-md-1" id="<%=comment.id%>">
                   <button class="comment-vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
                   <span class="points col-md-12"><%= comment.points %></span>

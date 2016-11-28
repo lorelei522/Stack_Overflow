@@ -1,50 +1,60 @@
-<h2><%= @question.title %></h2>
-<p>Submitted by <a href='<%= "/users/#{@question.author_id}" %>'><%= @question.author.username %></a></p><br />
-<p><%= @question.description %><span class ="time-since-creation ">  asked - <%= @question.time_since_creation  %> hours ago</span></p>
+<div class="container">
+  <h2><%= @question.title %></h2>
+  <p>Submitted by <a href='<%= "/users/#{@question.author_id}" %>'><%= @question.author.username %></a></p><br />
+  <p><%= @question.description %><span class ="time-since-creation ">  asked - <%= @question.time_since_creation  %> hours ago</span></p>
 
-<% if logged_in? %>
-  <p><a href="/questions/<%= @question.id %>/answers/new">Answer this question</a></p>
-<% end %>
-<% if logged_in? %>
-  <p><a href="/questions/<%= @question.id %>/comments/new">Add a comment to question </a></p>
-<% end %>
-<% unless @question.comments.empty? %>
-  <p>Comments</p>
-  <ul>
-    <% @question.comments.each do |comment| %>
-      <div class="question-comment">
-        <div class="row" id="<%=@question.id%>">
-          <div class="col-md-1" id="<%=comment.id%>">
-            <button class="question-vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
-            <span class="points col-md-12"><%= comment.points %></span>
-            <button class="question-vote-down glyphicon glyphicon-triangle-bottom col-md-12"></button>
+  <% if logged_in? %>
+    <p id="<%=@question.id%>" class="new-answer"><a href="/questions/<%= @question.id %>/answers/new">Answer this question</a></p>
+  <% end %>
+  <% if logged_in? %>
+    <p><a href="/questions/<%= @question.id %>/comments/new">Add a comment to question </a></p>
+  <% end %>
+  <% unless @question.comments.empty? %>
+    <div class="comments">
+      <p><strong><u>Comments</u></strong></p>
+      <br>
+      <ul>
+        <% @question.comments.each do |comment| %>
+          <div class="question-comment">
+            <div class="row q-comment" id="<%=@question.id%>">
+              <div class="col-md-1" id="<%=comment.id%>">
+                <button class="question-vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
+                <span class="points col-md-12"><%= comment.points %></span>
+                <button class="question-vote-down glyphicon glyphicon-triangle-bottom col-md-12"></button>
+              </div>
+            </div>
+            <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id %>"><%= comment.commenter.username %></a><span class ="time-since-creation ">  - <%= comment.date_of_creation  %> </span></li>
           </div>
-        </div>
-        <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id %>"><%= comment.commenter.username %></a><span class ="time-since-creation ">  - <%= comment.date_of_creation  %> </span></li>
-      </div>
-    <% end %>
-  </ul>
-<% end %>
+          <br>
+          <br>
+          <br>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<% if @question.best_answer_id %>
-  <p>Best answer:</p>
-  <p><%= @best_answer.text %></p>
-  <p><a href="/users/<%= @best_answer.user.id %>"> - <%= @best_answer.user.username %></a></p>
-  <% unless @best_answer.comments.empty? %>
-    <p>Comments</p>
-    <ul>
-      <% @best_answer.comments.each do |comment| %>
-        <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id%>"><%= comment.commenter.username %></a></li>
+  <% if @question.best_answer_id %>
+    <p>Best answer:</p>
+    <p><%= @best_answer.text %></p>
+    <p><a href="/users/<%= @best_answer.user.id %>"> - <%= @best_answer.user.username %></a></p>
+    <% unless @best_answer.comments.empty? %>
+      <p>Comments</p>
+      <ul>
+        <% @best_answer.comments.each do |comment| %>
+          <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id%>"><%= comment.commenter.username %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%unless @answers.empty?%>
+    <p id="answer-header"><strong><u>Answers</u></strong></p>
+    <br>
+    <ul class="answer-list list-unstyled">
+      <% @answers.each do |answer| %>
+        <%= erb :'_partials/_answer', layout: false, locals: {answer: answer} %>
+      <br>
       <% end %>
     </ul>
-  <% end %>
-<% end %>
-
-<%unless @answers.empty?%>
-  <p>Answers:</p>
-  <ul>
-    <% @answers.each do |answer| %>
-      <%= erb :'_partials/_answer', layout: false, locals: {answer: answer} %>
-    <% end %>
-  </ul>
-<%end%>
+  <%end%>
+</div>  
