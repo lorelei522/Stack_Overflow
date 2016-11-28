@@ -5,15 +5,15 @@
 	<center>------------------------------------------------------------------------</center>
     <center><h3>Amount of questions asked: <%= @user.questions.length %></h3></center>
 
-    <center><strong>Amount of questions answered: <%= @user.answers.length %> </strong></center>
-    <center><strong>Amount of comments left on questions: <%= @user.comments.length %> </strong></center>
+    <center>Amount of questions answered: <%= @user.answers.length %> </center>
+    <center>Amount of comments left on questions: <%= @user.comments.length %> </center>
 
-	
-	<center><u><h5>Questions asked:</h5></u></center>
-      <% @user.questions.each do |question| %><center><p>
-       
-<a href="/questions/<%=question.id%>"<span>&#187;</span><%= question.title %></a>
-      </p></center>
-      <% end %>
-
+<br>
+  <div class="container">
+  <% @user.questions.each do |question| %>
+  <ul>
+    <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
+  </ul>
+  <% end %>
+  </div>
 </div>
