@@ -15,10 +15,10 @@
   padding-bottom: 2%;
   padding-left: 20%;
   width: 150%;
-  color:white; 
 }
 
 label {
+  color:white; 
   font-weight: normal;
 }
 
@@ -30,8 +30,20 @@ label {
   width: 70%;
 }
 
+.answer-comment {
+  padding-left: 5%;
+}
+
+.question-comment {
+  padding-left: 5%;
+}
+
 .question-voting{
   position: absolute; left: 15%;
+}
+
+.q-comment {
+position: absolute; left: 20%;
 }
 .comments {
   padding-left: 40px;
@@ -56,3 +68,26 @@ label {
 .question{
   border-bottom: 1px solid lightgrey;
 }
+
+.comment-voting {
+  position: absolute; left: 24%;
+}
+
+.answer-voting {
+  position: absolute; left: 16%;
+}
+
+.answer {
+  padding-left: 6%;
+  border-bottom: 1px solid lightgrey;
+}
+
+#answer-header {
+  font-size: 18px;
+}
+
+.btn-primary {
+  /*background-color: darkgrey;*/
+  border-radius: 15px;
+}
+

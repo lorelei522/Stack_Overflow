@@ -211,8 +211,7 @@ $(document).ready(function() {
       url: url,
       method: "get"
     }).done(function(response){
-      $("#nav-question").replaceWith(response)
-      $
+      $("nav").find("#nav-question").replaceWith(response)
     });
   });
 
@@ -225,7 +224,6 @@ $(document).ready(function() {
       method: "get"
     }).done(function(response){
       $(".new-answer").replaceWith(response)
-      $
     });
   });
 

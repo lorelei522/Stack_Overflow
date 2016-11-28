@@ -1,6 +1,6 @@
 <li>
   <div class="answer">
-    <div class="row">
+    <div class="row answer-voting">
       <div class="col-md-1" id="<%=answer.id%>">
         <button class="vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
         <span class="points col-md-12"><%= answer.points %></span>
@@ -18,13 +18,15 @@
     <% if logged_in? %>
     <p><a href="/questions/<%= answer.question_id %>/answers/<%= answer.id %>/comments/new">Add a comment to answer </a></p>
     <% end %>
+    <br>
     <% unless answer.comments.empty? %>
       <div class="comments">
         <p><strong><u>Comments of Answer</u></strong></p>
+        <br>
         <ul>
           <% answer.comments.each do |comment| %>
             <div class="answer-comment">
-              <div class="row" id="<%=answer.id%>">
+              <div class="comment-voting row" id="<%=answer.id%>">
                 <div class="col-md-1" id="<%=comment.id%>">
                   <button class="comment-vote-up glyphicon glyphicon-triangle-top col-md-12"></button>
                   <span class="points col-md-12"><%= comment.points %></span>
@@ -33,6 +35,8 @@
               </div>
               <li><%= comment.text %> - <a href="/users/<%=comment.commenter.id%>"><%= comment.commenter.username %></a></li>
             </div>
+            <br>
+            <br>
             <br>
           <% end %>
         </ul>
