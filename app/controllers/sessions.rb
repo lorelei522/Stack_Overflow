@@ -17,5 +17,9 @@ delete '/sessions' do
   if logged_in?
     session.clear
   end
-  redirect '/'
+  redirect '/logout'
+end
+
+get '/logout' do
+  erb :'logout'
 end

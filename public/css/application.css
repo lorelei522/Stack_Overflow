@@ -103,3 +103,7 @@ position: absolute; left: 20%;
   padding-bottom: 15px;
   border-bottom: 1px solid lightgrey;
 }
+
+img{
+  width: 100%;
+}
